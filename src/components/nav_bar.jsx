@@ -9,17 +9,14 @@ export const NavBar = () => {
   }
   return (
     <nav className='nav-bar'>
-      <NavLink
-        className={navLinkClass}
-        to='/'
-      >
+      <NavLink className={navLinkClass} to='/'>
         Inicio
       </NavLink>
-      <NavLink
-        className={navLinkClass}
-        to='/lightbulb'
-      >
+      <NavLink className={navLinkClass}to='/lightbulb'> 
         Ampolleta
+      </NavLink>
+      <NavLink className={navLinkClass}to='/login'> 
+        Login
       </NavLink>
     </nav>
   )

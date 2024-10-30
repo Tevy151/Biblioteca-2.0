@@ -1,10 +1,12 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Login from '../pages/login'; 
+
 
 import HomePage from '../pages/home_page'
 import LightbulbPage from '../pages/lightbulb_page'
 
-import NavBar from '../components/nav_bar'
+import NavBar from './nav_bar'
 
 const Layout = () => {
   return (
@@ -16,11 +18,12 @@ const Layout = () => {
           <Routes>
             <Route path='/' element={<HomePage />} />
             <Route path='/lightbulb' element={<LightbulbPage />} />
+            <Route path='/login' element={<Login />} />
           </Routes>
         </div>
       </div>
     </BrowserRouter>
-  )
+  ) 
 }
 
 export default Layout

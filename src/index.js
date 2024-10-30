@@ -2,6 +2,7 @@ import React from 'react'
 import { createRoot } from 'react-dom/client';
 
 import Layout from './components/layout'
+import Login from './pages/login'
 
 import './stylesheets/index.scss'
 
