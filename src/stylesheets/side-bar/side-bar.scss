@@ -1,0 +1,30 @@
+.sidebar {
+    width: 100px;
+    background-color: #ccc;
+    color: #fff;
+    padding: 0; /* Sin padding para que el fondo cubra completamente */
+    display: flex;
+    flex-direction: column; /* Asegura que los elementos se apilen verticalmente */
+}
+
+.sidebar__item {
+    padding: 1rem; /* Espaciado interno para cada elemento */
+    margin: 0; /* Sin margen para evitar espacio extra */
+    border: 1px solid black; /* Borde negro alrededor de cada elemento */
+    background-color: white; /* Fondo blanco para que se vea el borde */
+    color: black; /* Color del texto dentro del cuadrado */
+    text-decoration: none; /* Elimina subrayado */
+}
+
+.sidebar__link {
+    color: black; /* Color de texto para los enlaces */
+    text-decoration: none; /* Elimina subrayado */
+}
+
+.sidebar__link:hover {
+    color: #ddd; /* Color al pasar el ratón */
+}
+
+.sidebar__link--active {
+    font-weight: bold; /* Estilo para el enlace activo (puedes personalizar) */
+}

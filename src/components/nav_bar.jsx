@@ -12,14 +12,14 @@ export const NavBar = () => {
       <NavLink className={navLinkClass} to='/'>
         Inicio
       </NavLink>
-      <NavLink className={navLinkClass}to='/lightbulb'> 
+      <NavLink className={navLinkClass} to='/lightbulb'> 
         Ampolleta
       </NavLink>
-      <NavLink className={navLinkClass}to='/login'> 
+      <NavLink className={`${navLinkClass({ isActive: false })} nav-bar__login`} to='/login'> 
         Login
       </NavLink>
     </nav>
   )
 }
- 
+
 export default NavBar

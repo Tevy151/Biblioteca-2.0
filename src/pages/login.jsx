@@ -6,7 +6,6 @@ export const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Lógica de autenticación
     console.log('Username:', username);
     console.log('Password:', password);
   };
