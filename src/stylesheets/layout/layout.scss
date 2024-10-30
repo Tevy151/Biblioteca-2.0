@@ -1,0 +1,9 @@
+/* Agrega esto a tu CSS existente */
+.layout__main {
+    display: flex; /* Usar flexbox para alinear los elementos en fila */
+}
+
+.layout__container {
+    flex: 1; /* Esto permite que el contenedor ocupe el espacio restante */
+    padding: 1rem; /* Espacio adicional alrededor del contenido */
+}
