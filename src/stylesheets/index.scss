@@ -47,3 +47,21 @@ input {
   padding: 8px;            
 }
 
+.menu-item {
+  padding: 10px;
+  cursor: pointer;
+  border: 1px solid #000;
+}
+
+.menu-item.active {
+  font-weight: bold;
+  background-color: #f0f0f0;
+}
+
+.salas-image {
+  width: 1000px;  
+  height: auto;  
+  margin-top: 15px;  
+}
+
+
