@@ -11,19 +11,21 @@ import Menu from './menu'; // Importa el nuevo componente Menu
 
 const Layout = () => {
   const [selectedMenu, setSelectedMenu] = useState('');
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [username, setUsername] = useState('');
 
   return (
     <BrowserRouter>
       <div className='layout'>
-        <NavBar />
+        <NavBar loggedIn={loggedIn} />
         <div className='layout__main'>
           <Sidebar onSelectMenu={setSelectedMenu} />
           <div className='layout__container'>
             <Menu selectedMenu={selectedMenu} />
             <Routes>
-              <Route path='/' element={<HomePage />} />
+              <Route path='/' element={<HomePage loggedIn={loggedIn} username={username} />} />
               <Route path='/lightbulb' element={<LightbulbPage />} />
-              <Route path='/login' element={<Login />} />
+              <Route path='/login' element={<Login setLoggedIn={setLoggedIn} setUsername={setUsername} />} />
             </Routes>
           </div>
         </div>

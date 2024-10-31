@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-export const NavBar = () => {
+export const NavBar = ({ loggedIn }) => {
   const navLinkClass = ({ isActive }) => {
     const classes = ['nav-bar__link']
     if (isActive) classes.push('nav-bar__link--active')
@@ -15,9 +15,7 @@ export const NavBar = () => {
       <NavLink className={navLinkClass} to='/lightbulb'> 
         Ampolleta
       </NavLink>
-      <NavLink className={`${navLinkClass({ isActive: false })} nav-bar__login`} to='/login'> 
-        Login
-      </NavLink>
+      {loggedIn ? '' : <NavLink className={`${navLinkClass({ isActive: false })} nav-bar__login`} to='/login'>Login</NavLink>}
     </nav>
   )
 }
