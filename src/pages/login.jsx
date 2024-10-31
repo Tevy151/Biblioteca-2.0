@@ -1,13 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-export const Login = () => {
+export const Login = (props) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('Username:', username);
-    console.log('Password:', password);
+    // console.log('Username:', username);
+    // console.log('Password:', password);
+    props.setLoggedIn(true);
+    props.setUsername(username);
+    navigate('/');
   };
 
   return (
