@@ -5,6 +5,7 @@ import HomePage from '../pages/home_page';
 import Libros from '../pages/libros';
 import Profile from '../pages/profile';
 import Reservas from '../pages/reservas'; // Ensure this import
+import Captura from '../assets/Captura.png'; // Ensure consistent casing
 
 import NavBar from './nav_bar';
 import Sidebar from './side-bar';
@@ -31,7 +32,7 @@ const Layout = () => {
             <Route path='/profile' element={<Profile reservations={reservations} />} />
             <Route path='/reservas' element={<Reservas loggedIn={loggedIn} addReservation={addReservation} />} />
             <Route path='/libros' element={<Libros loggedIn={loggedIn} />} />
-            <Route path='/salas' element={<div><p>Mapa de la biblioteca</p><img src='../assets/Captura.png' alt="Imagen de Sala" className="salas-image" /></div>} />
+            <Route path='/salas' element={<div><p>Mapa de la biblioteca</p><img src={Captura} alt="Imagen de Sala" className="salas-image" /></div>} />
           </Routes>
         </div>
       </div>
