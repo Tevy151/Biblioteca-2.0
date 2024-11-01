@@ -1,6 +1,6 @@
 // components/Menu.js
 import React from 'react';
-import salaImage from '../assets/Captura.PNG';
+import salaImage from '../assets/Captura.png'; // Ensure consistent casing
 import Libros from '../pages/libros';
 import Reservas from '../pages/reservas';
 

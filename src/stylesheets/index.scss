@@ -134,4 +134,56 @@ input {
   color: #333;
 }
 
+.room-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.room-item {
+  padding: 15px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  text-align: center;
+  background-color: #f9f9f9;
+}
+
+.room-item:hover {
+  background-color: #e0e0e0;
+}
+
+.time-slots-container {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+  width: 50%;
+  box-sizing: border-box;
+}
+
+.time-slots-slider {
+  display: flex;
+  padding: 10px 0;
+}
+
+.time-slot {
+  padding: 10px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  background-color: #f9f9f9;
+}
+
+.time-slot.selected {
+  background-color: #add8e6; /* Light blue background for selected slots */
+}
+
+.time-slot.occupied {
+  background-color: #ffcccc; /* Light red background for occupied slots */
+  cursor: not-allowed;
+}
+
+.time-slot:hover:not(.occupied) {
+  background-color: #e0e0e0;
+}
+
 
