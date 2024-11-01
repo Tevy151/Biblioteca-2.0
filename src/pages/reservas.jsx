@@ -20,29 +20,35 @@ const timeSlots = Array.from({ length: 24 }, (_, i) => {
   return `${startHour}:${startMinute} a ${endHour}:${endMinute}`;
 });
 
+const daysOfWeek = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'];
+
 const generateOccupiedSlots = () => {
   const occupiedSlots = {};
   for (let i = 1; i <= 8; i++) {
-    const numOccupied = Math.floor(Math.random() * 3) + 1;
-    const slots = [];
-    while (slots.length < numOccupied) {
-      const slot = timeSlots[Math.floor(Math.random() * timeSlots.length)];
-      if (!slots.includes(slot)) {
-        slots.push(slot);
+    occupiedSlots[`Sala ${i}`] = {};
+    daysOfWeek.forEach(day => {
+      const numOccupied = Math.floor(Math.random() * 3) + 1;
+      const slots = [];
+      while (slots.length < numOccupied) {
+        const slot = timeSlots[Math.floor(Math.random() * timeSlots.length)];
+        if (!slots.includes(slot)) {
+          slots.push(slot);
+        }
       }
-    }
-    occupiedSlots[`Sala ${i}`] = slots;
+      occupiedSlots[`Sala ${i}`][day] = slots;
+    });
   }
   return occupiedSlots;
 };
 
 const occupiedSlots = generateOccupiedSlots();
 
-const Reservas = ({ loggedIn }) => {
+const Reservas = ({ loggedIn, addReservation }) => {
   const navigate = useNavigate();
   const [selectedOption, setSelectedOption] = useState('');
   const [selectedBook, setSelectedBook] = useState(null);
   const [selectedRoom, setSelectedRoom] = useState(null);
+  const [selectedDay, setSelectedDay] = useState(daysOfWeek[0]);
   const [selectedTimes, setSelectedTimes] = useState([]);
 
   const handleOptionSelect = (option) => {
@@ -52,12 +58,14 @@ const Reservas = ({ loggedIn }) => {
   const handleReserve = () => {
     if (selectedBook && selectedBook.available > 0) {
       alert(`Has reservado el ${selectedBook.title}`);
+      addReservation(`Libro: ${selectedBook.title}`);
     }
   };
 
   const handleReserveRoom = () => {
     if (selectedRoom && selectedTimes.length > 0) {
-      alert(`Has reservado la ${selectedRoom} en los horarios: ${selectedTimes.join(', ')}`);
+      alert(`Has reservado la ${selectedRoom} el ${selectedDay} en los horarios: ${selectedTimes.join(', ')}`);
+      addReservation(`Sala: ${selectedRoom} el ${selectedDay} en los horarios: ${selectedTimes.join(', ')}`);
     }
   };
 
@@ -99,16 +107,28 @@ const Reservas = ({ loggedIn }) => {
                 <div>
                   <h4>{selectedRoom}</h4>
                   <img src={Captura} alt="Mapa de la sala" className="salas-image-small" />
+                  <div className="day-selection">
+                    <h5>Selecciona el día:</h5>
+                    {daysOfWeek.map(day => (
+                      <button
+                        key={day}
+                        className={`day-button ${selectedDay === day ? 'selected' : ''}`}
+                        onClick={() => setSelectedDay(day)}
+                      >
+                        {day}
+                      </button>
+                    ))}
+                  </div>
                   <div className="time-selection-container">
-                    <p className="time-selection-title">Selecciona los horarios (máximo 3 intervalos de 30 minutos):</p>
+                    <p className="time-selection-title">Selecciona los horarios (máximo 3 horarios):</p>
                     <div className="time-slots-container">
                       <div className="time-slots-slider">
                         {timeSlots.map((time, index) => (
                           <React.Fragment key={time}>
                             <button
-                              className={`time-slot ${selectedTimes.includes(time) ? 'selected' : ''} ${occupiedSlots[selectedRoom]?.includes(time) ? 'occupied' : ''}`}
-                              onClick={() => !occupiedSlots[selectedRoom]?.includes(time) && handleTimeSelect(time)}
-                              disabled={occupiedSlots[selectedRoom]?.includes(time)}
+                              className={`time-slot ${selectedTimes.includes(time) ? 'selected' : ''} ${occupiedSlots[selectedRoom][selectedDay]?.includes(time) ? 'occupied' : ''}`}
+                              onClick={() => !occupiedSlots[selectedRoom][selectedDay]?.includes(time) && handleTimeSelect(time)}
+                              disabled={occupiedSlots[selectedRoom][selectedDay]?.includes(time)}
                             >
                               {time}
                             </button>
