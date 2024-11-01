@@ -11,18 +11,22 @@ const Sidebar = ({ onSelectMenu }) => {
 
   return (
     <aside className='sidebar'>
-      
+      <NavLink 
+        className={sidebarLinkClass} 
+        to='/reservas' 
+        onClick={() => onSelectMenu('reservas')}
+      >
         <div className='sidebar__item'>
           <span>Reservas</span>
         </div>
-      
+      </NavLink>
       <NavLink 
         className={sidebarLinkClass} 
         to='/salas' 
         onClick={() => onSelectMenu('salas')}
       >
         <div className='sidebar__item'>
-          <span>Salas</span>
+          <span>Mapa de la biblioteca</span>
         </div>
       </NavLink>
       <NavLink 
