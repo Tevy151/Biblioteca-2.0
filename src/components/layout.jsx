@@ -29,7 +29,7 @@ const Layout = () => {
           <Routes>
             <Route path='/' element={<HomePage loggedIn={loggedIn} username={username} />} />
             <Route path='/login' element={<Login setLoggedIn={setLoggedIn} setUsername={setUsername} />} />
-            <Route path='/profile' element={<Profile reservations={reservations} />} />
+            <Route path='/profile' element={<Profile reservations={reservations} username={username} setLoggedIn={setLoggedIn} />} />
             <Route path='/reservas' element={<Reservas loggedIn={loggedIn} addReservation={addReservation} />} />
             <Route path='/libros' element={<Libros loggedIn={loggedIn} />} />
             <Route path='/salas' element={<div><p>Mapa de la biblioteca</p><img src={Captura} alt="Imagen de Sala" className="salas-image" /></div>} />
