@@ -20,7 +20,7 @@ const Libros = ({ loggedIn }) => {
   };
 
   return (
-    <div>
+    <div className='book-container'>
       <div className='book-list'>
         {books.map((book) => (
           <div
