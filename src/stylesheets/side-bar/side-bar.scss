@@ -1,5 +1,5 @@
 .sidebar {
-    width: 100px;
+    width: 180px;
     background-color: #ccc;
     color: #fff;
     padding: 0; /* Sin padding para que el fondo cubra completamente */
@@ -19,12 +19,19 @@
 .sidebar__link {
     color: black; /* Color de texto para los enlaces */
     text-decoration: none; /* Elimina subrayado */
+    transition: color 0.3s, background-color 0.3s; /* Efecto de transición */
+    padding: 1rem;
+    display: block;
 }
 
 .sidebar__link:hover {
-    color: #ddd; /* Color al pasar el ratón */
+    color: #ddd; /* Color del texto al pasar el ratón */
+    background-color: #333; /* Fondo al pasar el ratón */
+    
 }
-
 .sidebar__link--active {
-    font-weight: bold; /* Estilo para el enlace activo (puedes personalizar) */
+    font-weight: bold; /* Estilo para el enlace activo */
+    color: #fff; /* Color de texto activo */
+    background-color:#333; /* Fondo para el enlace activo */
+   
 }

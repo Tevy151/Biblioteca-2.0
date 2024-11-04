@@ -3,222 +3,348 @@
 @import './layout/index.scss';
 @import './side-bar/index.scss';
 @import './nav-bar/index.scss';
-@import './lightbulb-page/index.scss';
 
 html, body {
   padding: 0;
   margin: 0;
-  background-color: #f8f8f8; /* Add a background color to avoid white screen */
+  background-color: #f8f8f8; /* Fondo gris claro */
 }
 
 * {
   font-family: 'Open Sans', sans-serif;
 }
 
-.login-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;  
-  justify-content: center; 
-  height: 100vh;  
-}
 
-form {
-  border: 1px solid #ccc;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: #fff;  
-}
 
-.login-field {
-  display: flex;
-  flex-direction: column;  
-  align-items: center;     
-  margin-bottom: 15px;     
-}
-
-label {
-  margin-bottom: 5px;      
-}
-
-input {
-  width: 100%;             
-  max-width: 300px;        
-  padding: 8px;            
-}
-
-.menu-item {
-  padding: 10px;
+/* Estilo para los botones de opción */
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007acc;
+  color: #fff;
+  font-size: 1rem;
   cursor: pointer;
-  border: 1px solid #000;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #005fa3;
+  }
 }
 
-.menu-item.active {
-  font-weight: bold;
-  background-color: #f0f0f0;
-}
-
-.salas-image {
-  width: 1000px;  
-  height: auto;  
-  margin-top: 15px;  
-}
-
-.salas-image-small {
-  width: 500px;  
-  height: auto;  
-  margin-top: 15px;  
-}
-
-.book-list {
-  max-height: 400px;
-  overflow-y: scroll;
-  border: 1px solid #ccc;
-  padding: 10px;
-  margin-bottom: 20px;
-}
-
-.book-item {
-  cursor: pointer;
-  padding: 5px;
-  border-bottom: 1px solid #eee;
-}
-
-.book-item:hover {
-  background-color: #f0f0f0;
-}
-
-.book-details {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.book-cover {
-  width: 150px;
-  height: auto;
-  margin-bottom: 10px;
-}
-
-.nav-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  background-color: #f8f8f8;
-  border-bottom: 1px solid #ddd;
-}
-
-.nav-bar__left {
-  display: flex;
-  align-items: center;
-}
-
-.nav-bar__right {
-  display: flex;
-  align-items: center;
-}
-
-.nav-bar__link {
-  margin-right: 15px;
-  text-decoration: none;
-  color: #333;
-}
-
-.nav-bar__link--active {
-  font-weight: bold;
-  background-color: #add8e6; /* Light blue background for active links */
-}
-
-.nav-bar__welcome {
-  margin-right: 15px;
-  font-weight: bold;
-}
-
-.nav-bar__login {
-  text-decoration: none;
-  color: #333;
-}
-
-.campus-dropdown {
-  margin-left: 5px;
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #fff;
-}
-
+/* Lista de salas */
 .room-list {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
+  margin: 0;
+
+  .room-item {
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #e8e8e8;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #d0d0d0;
+    }
+  }
 }
 
-.room-item {
-  padding: 15px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  cursor: pointer;
-  text-align: center;
-  background-color: #f9f9f9;
-}
-
-.room-item:hover {
-  background-color: #e0e0e0;
-}
-
-.time-slots-container {
+/* Estilo para la selección del día */
+.day-selection {
   display: flex;
-  overflow-x: auto;
-  white-space: nowrap;
-  width: 50%;
-  box-sizing: border-box;
+  margin: 15px 0;
+
+  .day-button {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #0a0a0d;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &.selected {
+      background-color: #007acc;
+      color: #fff;
+    }
+
+    &:hover {
+      background-color: #005fa3;
+    }
+
+    // Remover el margen para que estén todos juntos
+    margin-right: 5px; // Puedes ajustar este valor según tu preferencia
+  }
+
+  // Para evitar un margen en el último botón
+  .day-button:last-child {
+    margin-right: 0;
+  }
+}
+
+
+.reservas-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px; // Espacio entre el contenido y la imagen
+  max-width: 90%; // Limita el ancho del contenedor para evitar que la imagen toque el borde de la ventana
+  margin: 0 auto; // Centra el contenedor en la ventana
+  padding: 20px; // Espacio alrededor del contenedor
+}
+
+.reservas-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px; // Reduce el espacio entre el contenido y la imagen
+}
+
+.reservas-detalles {
+  flex: 1;
+}
+
+.imagensala {
+  display: flex;
+  justify-content: flex-start;
+  margin-right: none; // Espacio adicional a la derecha de la imagen, ajusta según sea necesario
+  
+}
+
+
+
+
+/* Contenedor individual para cada horario */
+.time-slot-container {
+  display: flex;
+  justify-content: center; /* Centra el contenido */
+  align-items: center; /* Centra verticalmente */
+}
+
+.time-slot-slider {
+  overflow-x: auto; /* Permite desplazamiento horizontal */
+  white-space: nowrap; /* Impide que los elementos se envuelvan */
+  width: 100%; /* Ajusta el ancho según sea necesario */
+  padding: 10px 0; /* Espaciado arriba y abajo del slider */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra opcional para el contenedor del slider */
+}
+
+.time-slot-container {
+  display: inline-flex; /* Cambiado a inline-flex para que los elementos estén en una línea */
+  flex-direction: column; /* Coloca la hora encima del cuadrado */
+  align-items: center; /* Centra el contenido horizontalmente */
+  margin: none; /* Espacio entre los cuadrados */
+}
+
+.time-slot-slider {
+  max-width: 100%; /* Asegúrate de que el contenedor principal tenga un ancho definido */
 }
 
 .time-slots-slider {
   display: flex;
-  padding: 10px 0;
+  flex-wrap: nowrap; /* Evita que los elementos se envuelvan a la siguiente línea */
+  overflow-x: auto; /* Permite el desplazamiento horizontal */
+  padding: 10px 0; /* Espaciado arriba y abajo */
+  scrollbar-width: thin; /* Firefox: ancho del scrollbar */
+  max-width: 800px; /* Ajusta el ancho según sea necesario */
+}
+
+/* Para navegadores webkit (Chrome, Safari, Edge) */
+.time-slots-slider::-webkit-scrollbar {
+  height: 8px; /* Altura del scrollbar */
+}
+
+.time-slots-slider::-webkit-scrollbar-thumb {
+  background-color: #ccc; /* Color del scrollbar */
+  border-radius: 10px; /* Bordes redondeados del scrollbar */
+}
+
+.time-slots-slider::-webkit-scrollbar-track {
+  background: #f9f9f9; /* Color de fondo del track */
+}
+
+
+.time-label {
+  margin-bottom: 0; /* Sin margen para unir con el cuadrado */
+  font-weight: bold; /* Opcional: negrita para destacar la hora */
 }
 
 .time-slot {
-  padding: 10px;
-  margin-right: 10px;
+  width: 100px; /* Tamaño del cuadrado */
+  height: 50px; /* Tamaño del cuadrado */
+  background-color: #e0e0e0; /* Color de fondo inicial */
+  border: none; /* Sin borde */
+  border-radius: none; /* Bordes redondeados */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  transition: background-color 0.3s; /* Suaviza el cambio de color */
+  margin: 0; /* Sin margen para unir los cuadrados */
+  padding: 0; /* Sin padding para asegurar que no haya espacio interno */
+
+  &.occupied {
+    background-color: red; /* Color para horas ocupadas */
+  }
+
+  &.selected {
+    background-color: #007acc; /* Color para horas seleccionadas */
+  }
+
+  &:not(.occupied):not(.selected) {
+    background-color: green; /* Color para horas libres */
+  }
+
+  &:disabled {
+    background-color: red; /* Color para horas deshabilitadas */
+    cursor: not-allowed; /* Cursor que indica que no se puede interactuar */
+  }
+
+  
+}
+
+
+
+
+/* Contenedor principal de libros */
+.book-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px; /* Separación entre el selector y los detalles */
+  padding: 20px;
+}
+
+/* Selector de libros (a la izquierda) */
+/* Estilo para la lista de libros */
+.book-list {
+  width: 15%;
+  max-width: 120px;
+  max-height: 400px;
+  overflow-y: auto;
   border: 1px solid #ccc;
-  cursor: pointer;
-  background-color: #f9f9f9;
-}
-
-.time-slot.selected {
-  background-color: #add8e6; /* Light blue background for selected slots */
-}
-
-.time-slot.occupied {
-  background-color: #ffcccc; /* Light red background for occupied slots */
-  cursor: not-allowed;
-}
-
-.time-slot:hover:not(.occupied) {
-  background-color: #e0e0e0;
-}
-
-.day-selection {
-  margin: 10px 0;
-}
-
-.day-button {
   padding: 10px;
-  margin-right: 10px;
-  border: 1px solid #ccc;
-  cursor: pointer;
-  background-color: #f9f9f9;
+  background-color: #e8e8e8;
+  border-radius: 8px;
+
+  h3 {
+    text-align: center; /* Centrar el título */
+    margin-bottom: 1rem;
+    font-size: 1.2rem; /* Aumentar el tamaño del título */
+  }
+
+  /* Estilo para los elementos de la lista de libros */
+  .book-item {
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    background-color: #ffffff; /* Color de fondo de los items */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s; /* Transición suave */
+
+    &:hover {
+      background-color: #f0f0f0; /* Color al pasar el mouse */
+      transform: translateY(-2px); /* Levantar el elemento al pasar el mouse */
+    }
+
+    &.selected {
+      background-color: #007acc; /* Color de fondo cuando está seleccionado */
+      color: #fff; /* Color de texto blanco para contraste */
+      font-weight: bold; /* Resaltar el texto seleccionado */
+    }
+  }
 }
 
-.day-button.selected {
-  background-color: #add8e6; /* Light blue background for selected day */
+
+/* Detalles del libro (a la derecha) */
+.book-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 600px;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  .book-cover {
+    width: 220px;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    text-align: center;
+    margin: 0.75rem 0;
+    font-size: 1.1rem;
+  }
+
+  button {
+    cursor: pointer;
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 4px;
+    margin-top: 1rem;
+    background-color: #007acc;
+    color: #fff;
+    font-size: 1.1rem;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #005fa3;
+    }
+  }
 }
 
-.day-button:hover {
-  background-color: #e0e0e0;
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; // Altura completa de la ventana
+  background-color: #f5f5f5; // Color de fondo
+
+  h2 {
+    margin-bottom: 20px;
+    color: #333; // Color del título
+  }
+
+  form {
+    background-color: #ffffff; // Color del fondo del formulario
+    padding: 30px;
+    border-radius: 8px; // Bordes redondeados
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); // Sombra sutil
+    width: 300px; // Ancho del cuadrado
+    display: flex;
+    flex-direction: column;
+
+    .login-field {
+      margin-bottom: 15px;
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold; // Negrita para las etiquetas
+        color: #555; // Color de las etiquetas
+      }
+
+      input {
+        width: 100%; // Ancho completo
+        padding: 10px; // Espaciado interno
+        border: 1px solid #ccc; // Borde gris
+        border-radius: 4px; // Bordes redondeados
+        font-size: 16px; // Tamaño de la fuente
+      }
+    }
+
+    button {
+      background-color: #007bff; // Color de fondo del botón
+      color: white; // Color del texto del botón
+      border: none; // Sin borde
+      border-radius: 4px; // Bordes redondeados
+      padding: 10px; // Espaciado interno
+      font-size: 16px; // Tamaño de la fuente
+      cursor: pointer; // Cursor de mano al pasar el ratón
+
+      &:hover {
+        background-color: #0056b3; // Color de fondo al pasar el ratón
+      }
+    }
+  }
 }
-
-

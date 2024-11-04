@@ -104,50 +104,57 @@ const Reservas = ({ loggedIn, addReservation }) => {
                   ))}
                 </ul>
               ) : (
-                <div>
-                  <h4>{selectedRoom}</h4>
-                  <img src={Captura} alt="Mapa de la sala" className="salas-image-small" />
-                  <div className="day-selection">
-                    <h5>Selecciona el día:</h5>
-                    {daysOfWeek.map(day => (
-                      <button
-                        key={day}
-                        className={`day-button ${selectedDay === day ? 'selected' : ''}`}
-                        onClick={() => setSelectedDay(day)}
-                      >
-                        {day}
-                      </button>
-                    ))}
-                  </div>
-                  <div className="time-selection-container">
-                    <p className="time-selection-title">Selecciona los horarios (máximo 3 horarios):</p>
-                    <div className="time-slots-container">
-                      <div className="time-slots-slider">
-                        {timeSlots.map((time, index) => (
-                          <React.Fragment key={time}>
-                            <button
-                              className={`time-slot ${selectedTimes.includes(time) ? 'selected' : ''} ${occupiedSlots[selectedRoom][selectedDay]?.includes(time) ? 'occupied' : ''}`}
-                              onClick={() => !occupiedSlots[selectedRoom][selectedDay]?.includes(time) && handleTimeSelect(time)}
-                              disabled={occupiedSlots[selectedRoom][selectedDay]?.includes(time)}
-                            >
-                              {time}
-                            </button>
-                            {index > 0 && index % 10 === 9 && <br />}
-                          </React.Fragment>
-                        ))}
-                      </div>
-                    </div>
-                    {selectedTimes.length > 0 && (
-                      <button onClick={handleReserveRoom}>Reservar</button>
-                    )}
-                  </div>
-                </div>
+                <div className="reservas-content">
+  <div className="reservas-detalles">
+    <h4>{selectedRoom}</h4>
+    <div className="day-selection">
+      <h5>Selecciona el día:</h5>
+      {daysOfWeek.map(day => (
+        <button
+          key={day}
+          className={`day-button ${selectedDay === day ? 'selected' : ''}`}
+          onClick={() => setSelectedDay(day)}
+        >
+          {day}
+        </button>
+      ))}
+    </div>
+    <div className="time-selection-container">
+      <p className="time-selection-title">Selecciona los horarios (máximo 3 horarios):</p>
+      <div className="time-slot-slider">
+        <div className="time-slots-slider">
+          {timeSlots.map((time, index) => {
+            const [startTime] = time.split(' a ');
+            return (
+              <div className="time-slot-container" key={time}>
+                <span className="time-label">{startTime}</span>
+                <button
+                  className={`time-slot ${selectedTimes.includes(time) ? 'selected' : ''} ${occupiedSlots[selectedRoom][selectedDay]?.includes(time) ? 'occupied' : ''}`}
+                  onClick={() => !occupiedSlots[selectedRoom][selectedDay]?.includes(time) && handleTimeSelect(time)}
+                  disabled={occupiedSlots[selectedRoom][selectedDay]?.includes(time)}
+                />
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      {selectedTimes.length > 0 && (
+        <button onClick={handleReserveRoom}>Reservar</button>
+      )}
+    </div>
+  </div>
+  <div className="imagensala">
+    <img src={Captura} alt="Mapa de la sala" className="salas-image-small" />
+  </div>
+</div>
+
               )}
             </div>
           ) : (
-            <div>
-              <h3>Libros Disponibles</h3>
+            <div className='book-container'>
+              
               <div className='book-list'>
+              <h3>Libros Disponibles</h3>
                 {books.map((book) => (
                   <div
                     key={book.id}

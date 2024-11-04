@@ -17,7 +17,7 @@ export const Login = (props) => {
 
   return (
     <div className='login-container'>
-      <h3>Login Mockup Office 365</h3>
+      
       <h2>Iniciar Sesión</h2>
       <form onSubmit={handleSubmit}>
         <div className='login-field'>
