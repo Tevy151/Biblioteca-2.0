@@ -38,7 +38,7 @@ const Libros = ({ loggedIn }) => {
           <p>{selectedBook.title}</p>
           <p>Autor: {selectedBook.author}</p>
           <p>Editorial: {selectedBook.publisher}</p>
-          <p>Descripcion: {selectedBook.description}</p>
+          <p>Descripción: {selectedBook.description}</p>
           <p>Disponibles: {selectedBook.available}</p>
           {loggedIn && selectedBook.available > 0 && (
             <button onClick={handleReserve}>Reservar</button>
