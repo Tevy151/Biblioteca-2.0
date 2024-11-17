@@ -25,13 +25,12 @@
 }
 
 .sidebar__link:hover {
-    color: #ddd; /* Color del texto al pasar el ratón */
-    background-color: #333; /* Fondo al pasar el ratón */
+    color: #fff; /* Color del texto al pasar el ratón */
+    background-color: #3a3a3a; /* Fondo al pasar el ratón */
     
 }
 .sidebar__link--active {
-    font-weight: bold; /* Estilo para el enlace activo */
-    color: #fff; /* Color de texto activo */
-    background-color:#333; /* Fondo para el enlace activo */
+    background-color:#3a3a3a; /* Fondo para el enlace activo */
    
 }
+
