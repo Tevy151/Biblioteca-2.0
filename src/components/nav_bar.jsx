@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
-export const NavBar = ({ loggedIn, username }) => {
+export const NavBar = () => {
   const [selectedCampus, setSelectedCampus] = useState('San Joaquin');
   const navLinkClass = ({ isActive }) => {
     const classes = ['nav-bar__link'];
@@ -28,18 +28,10 @@ export const NavBar = ({ loggedIn, username }) => {
         </select>
       </div>
       <div className='nav-bar__right'>
-        {loggedIn ? (
-          <>
-            <div className='nav-bar__welcome'>Bienvenido {username}</div>
-            <NavLink className={navLinkClass} to='/profile'>
-              Mi Perfil
-            </NavLink>
-          </>
-        ) : (
-          <NavLink className={`${navLinkClass({ isActive: false })} nav-bar__login`} to='/login'>
-            Login
+          {/*<div className='nav-bar__welcome'>Bienvenido {username}</div>*/}
+          <NavLink className={navLinkClass} to='/profile'>
+            Mi Perfil
           </NavLink>
-        )}
       </div>
     </nav>
   );
