@@ -10,7 +10,7 @@ const books = Array.from({ length: 20 }, (_, i) => ({
   description: `Esta es una descripcion de prueba para la realizacion de la pagina para el Libro ${i + 1} de la Editorial ${i + 1}`
 })).concat({ id: 21, title: 'Libro 21', available: 0, author: 'Autor 21', publisher: 'Editorial 21', description: 'Esta es una descripcion de prueba para la realizacion de la pagina para el Libro 21 de la Editorial 21' });
 
-const Libros = ({ loggedIn }) => {
+const Libros = () => {
   const [selectedBook, setSelectedBook] = useState(null);
 
   const handleReserve = () => {
@@ -40,9 +40,7 @@ const Libros = ({ loggedIn }) => {
           <p>Editorial: {selectedBook.publisher}</p>
           <p>Descripción: {selectedBook.description}</p>
           <p>Disponibles: {selectedBook.available}</p>
-          {loggedIn && selectedBook.available > 0 && (
-            <button onClick={handleReserve}>Reservar</button>
-          )}
+          <button onClick={handleReserve}>Reservar</button>
         </div>
       )}
     </div>

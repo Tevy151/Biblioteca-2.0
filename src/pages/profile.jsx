@@ -1,15 +1,6 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 
-const Profile = ({ reservations, username, setLoggedIn }) => {
-  const navigate = useNavigate();
-
-  const cerrarSesion = () => {
-    alert(`Se ha cerrado la sesión de ${username}`);
-    reservations.length = 0;
-    setLoggedIn(false);
-    navigate('/login');
-  };
+const Profile = ({ reservations }) => {
 
   return (
     <div>
@@ -20,7 +11,6 @@ const Profile = ({ reservations, username, setLoggedIn }) => {
           <li key={index}>{reservation}</li>
         ))}
       </ul>
-      <button onClick={cerrarSesion}>Cerrar Sesión</button>
     </div>
   );
 };

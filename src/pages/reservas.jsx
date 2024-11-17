@@ -43,7 +43,7 @@ const generateOccupiedSlots = () => {
 
 const occupiedSlots = generateOccupiedSlots();
 
-const Reservas = ({ loggedIn, addReservation }) => {
+const Reservas = ({ addReservation }) => {
   const navigate = useNavigate();
   const [selectedOption, setSelectedOption] = useState('');
   const [selectedBook, setSelectedBook] = useState(null);
@@ -52,7 +52,7 @@ const Reservas = ({ loggedIn, addReservation }) => {
   const [selectedTimes, setSelectedTimes] = useState([]);
 
   const handleOptionSelect = (option) => {
-    !loggedIn ? navigate('/login', { state: { redirectTo: `/reservas/${option}` } }) : setSelectedOption(option);
+    setSelectedOption(option);
   };
 
   const handleReserve = () => {
@@ -173,7 +173,7 @@ const Reservas = ({ loggedIn, addReservation }) => {
                   <p>Editorial: {selectedBook.publisher}</p>
                   <p>Descripcion: {selectedBook.description}</p>
                   <p>Disponibles: {selectedBook.available}</p>
-                  {loggedIn && selectedBook.available > 0 && (
+                  {selectedBook.available > 0 && (
                     <button onClick={handleReserve}>Reservar</button>
                   )}
                 </div>

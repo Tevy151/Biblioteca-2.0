@@ -1,9 +1,9 @@
 import React from 'react';
 
-export const HomePage = ({ loggedIn, username }) => {
+export const HomePage = () => {
   return (
     <>
-      {loggedIn ? <div>Buenos Días {username}</div> : <div>Bienvenido a la Biblioteca USM 2.0</div>}
+      <div>Bienvenido a la Biblioteca USM 2.0</div>
     </>
   );
 };
