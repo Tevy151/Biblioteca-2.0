@@ -28,10 +28,9 @@ export const NavBar = () => {
         </select>
       </div>
       <div className='nav-bar__right'>
-          {/*<div className='nav-bar__welcome'>Bienvenido {username}</div>*/}
-          <NavLink className={navLinkClass} to='/profile'>
-            Mi Perfil
-          </NavLink>
+        <NavLink className={navLinkClass} to='/profile'>
+          Mi Perfil
+        </NavLink>
       </div>
     </nav>
   );

@@ -7,16 +7,20 @@
 html, body {
   padding: 0;
   margin: 0;
-  background-color: #f8f8f8; /* Fondo gris claro */
+  background-color: #f8f8f8;
+  height: 100%;
+  width: 100%;
+  font-size: 16px;
+  overflow: hidden;
 }
 
 * {
   font-family: 'Open Sans', sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-
-
-/* Estilo para los botones de opción */
 button {
   padding: 10px 20px;
   margin: 10px;
@@ -33,7 +37,6 @@ button {
   }
 }
 
-/* Lista de salas */
 .room-list {
   list-style: none;
   padding: 0;
@@ -53,7 +56,6 @@ button {
   }
 }
 
-/* Estilo para la selección del día */
 .day-selection {
   display: flex;
   margin: 15px 0;
@@ -75,30 +77,33 @@ button {
       background-color: #1e1e1e;
     }
 
-    // Remover el margen para que estén todos juntos
-    margin-right: 5px; // Puedes ajustar este valor según tu preferencia
+    margin-right: 5px;
   }
 
-  // Para evitar un margen en el último botón
   .day-button:last-child {
     margin-right: 0;
   }
 }
 
-
 .reservas-container {
   display: flex;
   align-items: flex-start;
-  gap: 20px; // Espacio entre el contenido y la imagen
-  max-width: 90%; // Limita el ancho del contenedor para evitar que la imagen toque el borde de la ventana
-  margin: 0 auto; // Centra el contenedor en la ventana
-  padding: 20px; // Espacio alrededor del contenedor
+  gap: 20px;
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 20px;
 }
 
 .reservas-content {
   display: flex;
   align-items: flex-start;
-  gap: 20px; // Reduce el espacio entre el contenido y la imagen
+  gap: 20px;
+  max-width: 100%;
+  flex-wrap: wrap;
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 }
 
 .reservas-detalles {
@@ -108,152 +113,149 @@ button {
 .imagensala {
   display: flex;
   justify-content: flex-start;
-  margin-right: none; // Espacio adicional a la derecha de la imagen, ajusta según sea necesario
-  
+  margin-right: none;
 }
 
-
-
-
-/* Contenedor individual para cada horario */
 .time-slot-container {
   display: flex;
-  justify-content: center; /* Centra el contenido */
-  align-items: center; /* Centra verticalmente */
+  justify-content: center;
+  align-items: center;
 }
 
 .time-slot-slider {
-  overflow-x: auto; /* Permite desplazamiento horizontal */
-  white-space: nowrap; /* Impide que los elementos se envuelvan */
-  width: 100%; /* Ajusta el ancho según sea necesario */
-  padding: 10px 0; /* Espaciado arriba y abajo del slider */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra opcional para el contenedor del slider */
+  overflow-x: auto;
+  white-space: nowrap;
+  width: 100%;
+  padding: 10px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  @media (max-width: 768px) {
+    overflow-x: scroll;
+  }
 }
 
 .time-slot-container {
-  display: inline-flex; /* Cambiado a inline-flex para que los elementos estén en una línea */
-  flex-direction: column; /* Coloca la hora encima del cuadrado */
-  align-items: center; /* Centra el contenido horizontalmente */
-  margin: none; /* Espacio entre los cuadrados */
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  margin: none;
 }
 
 .time-slot-slider {
-  max-width: 100%; /* Asegúrate de que el contenedor principal tenga un ancho definido */
+  max-width: 100%;
 }
 
 .time-slots-slider {
   display: flex;
-  flex-wrap: nowrap; /* Evita que los elementos se envuelvan a la siguiente línea */
-  overflow-x: auto; /* Permite el desplazamiento horizontal */
-  padding: 10px 0; /* Espaciado arriba y abajo */
-  scrollbar-width: thin; /* Firefox: ancho del scrollbar */
-  max-width: 800px; /* Ajusta el ancho según sea necesario */
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding: 10px 0;
+  scrollbar-width: thin;
+  max-width: 800px;
+  max-width: 100%;
+  @media (max-width: 768px) {
+    overflow-x: scroll;
+  }
 }
 
-/* Para navegadores webkit (Chrome, Safari, Edge) */
 .time-slots-slider::-webkit-scrollbar {
-  height: 8px; /* Altura del scrollbar */
+  height: 8px;
 }
 
 .time-slots-slider::-webkit-scrollbar-thumb {
-  background-color: #ccc; /* Color del scrollbar */
-  border-radius: 10px; /* Bordes redondeados del scrollbar */
+  background-color: #ccc;
+  border-radius: 10px;
 }
 
 .time-slots-slider::-webkit-scrollbar-track {
-  background: #f9f9f9; /* Color de fondo del track */
+  background: #f9f9f9;
 }
 
-
 .time-label {
-  margin-bottom: 0; /* Sin margen para unir con el cuadrado */
-  font-weight: bold; /* Opcional: negrita para destacar la hora */
+  margin-bottom: 0;
+  font-weight: bold;
 }
 
 .time-slot {
-  width: 100px; /* Tamaño del cuadrado */
-  height: 50px; /* Tamaño del cuadrado */
-  background-color: #e0e0e0; /* Color de fondo inicial */
-  border: none; /* Sin borde */
-  border-radius: none; /* Bordes redondeados */
-  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-  transition: background-color 0.3s; /* Suaviza el cambio de color */
-  margin: 0; /* Sin margen para unir los cuadrados */
-  padding: 0; /* Sin padding para asegurar que no haya espacio interno */
+  width: 100px;
+  height: 50px;
+  background-color: #e0e0e0;
+  border: none;
+  border-radius: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin: 0;
+  padding: 0;
 
   &.occupied {
-    background-color: red; /* Color para horas ocupadas */
+    background-color: red;
   }
 
   &.selected {
-    background-color: #007acc; /* Color para horas seleccionadas */
+    background-color: #007acc;
   }
 
   &:not(.occupied):not(.selected) {
-    background-color: green; /* Color para horas libres */
+    background-color: green;
   }
 
   &:disabled {
-    background-color: red; /* Color para horas deshabilitadas */
-    cursor: not-allowed; /* Cursor que indica que no se puede interactuar */
+    background-color: red;
+    cursor: not-allowed;
   }
-
-  
 }
 
-
-
-
-/* Contenedor principal de libros */
 .book-container {
   display: flex;
   align-items: flex-start;
-  gap: 20px; /* Separación entre el selector y los detalles */
+  gap: 20px;
   padding: 20px;
+  max-width: 100%;
 }
 
-/* Selector de libros (a la izquierda) */
-/* Estilo para la lista de libros */
 .book-list {
-  width: 15%;
+  width: 20%;
+  min-width: 150px;
   max-width: 120px;
-  max-height: 400px;
+  height: calc(100vh - 100px);
   overflow-y: auto;
   border: 1px solid #ccc;
   padding: 10px;
   background-color: #e8e8e8;
   border-radius: 8px;
 
-  h3 {
-    text-align: center; /* Centrar el título */
-    margin-bottom: 1rem;
-    font-size: 1.2rem; /* Aumentar el tamaño del título */
+  @media (max-width: 768px) {
+    width: 100%;
+    max-width: none;
   }
 
-  /* Estilo para los elementos de la lista de libros */
+  h3 {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+
   .book-item {
     padding: 10px;
     margin: 5px 0;
     border-radius: 5px;
-    background-color: #ffffff; /* Color de fondo de los items */
+    background-color: #ffffff;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s; /* Transición suave */
+    transition: background-color 0.3s, transform 0.2s;
 
     &:hover {
-      background-color: #f0f0f0; /* Color al pasar el mouse */
-      transform: translateY(-2px); /* Levantar el elemento al pasar el mouse */
+      background-color: #f0f0f0;
+      transform: translateY(-2px);
     }
 
     &.selected {
-      background-color: #007acc; /* Color de fondo cuando está seleccionado */
-      color: #fff; /* Color de texto blanco para contraste */
-      font-weight: bold; /* Resaltar el texto seleccionado */
+      background-color: #007acc;
+      color: #fff;
+      font-weight: bold;
     }
   }
 }
 
-
-/* Detalles del libro (a la derecha) */
 .book-details {
   display: flex;
   flex-direction: column;
@@ -297,20 +299,20 @@ button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh; // Altura completa de la ventana
-  background-color: #f5f5f5; // Color de fondo
+  height: 100vh;
+  background-color: #f5f5f5;
 
   h2 {
     margin-bottom: 20px;
-    color: #333; // Color del título
+    color: #333;
   }
 
   form {
-    background-color: #ffffff; // Color del fondo del formulario
+    background-color: #ffffff;
     padding: 30px;
-    border-radius: 8px; // Bordes redondeados
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); // Sombra sutil
-    width: 300px; // Ancho del cuadrado
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
     display: flex;
     flex-direction: column;
 
@@ -320,31 +322,269 @@ button {
       label {
         display: block;
         margin-bottom: 5px;
-        font-weight: bold; // Negrita para las etiquetas
-        color: #555; // Color de las etiquetas
+        font-weight: bold;
+        color: #555;
       }
 
       input {
-        width: 100%; // Ancho completo
-        padding: 10px; // Espaciado interno
-        border: 1px solid #ccc; // Borde gris
-        border-radius: 4px; // Bordes redondeados
-        font-size: 16px; // Tamaño de la fuente
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
       }
     }
 
     button {
-      background-color: #444; // Color de fondo del botón
-      color: white; // Color del texto del botón
-      border: none; // Sin borde
-      border-radius: 4px; // Bordes redondeados
-      padding: 10px; // Espaciado interno
-      font-size: 16px; // Tamaño de la fuente
-      cursor: pointer; // Cursor de mano al pasar el ratón
+      background-color: #444;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
 
       &:hover {
-        background-color: #0056b3; // Color de fondo al pasar el ratón
+        background-color: #0056b3;
       }
     }
   }
+}
+
+.photo-slider {
+  position: relative;
+  width: 100%;
+  height: 40vh;
+  overflow: hidden;
+}
+
+.photo-slider img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.texto-superpuesto {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.layout {
+  height: 100%;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.layout__main {
+  height: 100%;
+  min-height: 100%;
+  overflow-y: auto;
+}
+
+.layout__container {
+  height: 100%;
+  overflow-y: auto;
+  min-height: 100%;
+}
+
+.image-slider {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  object-position: center;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .text-overlay {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+  }
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.imagen-zoom {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.info-table {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+
+  table {
+    border-collapse: collapse;
+    width: 80%;
+    max-width: 600px;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+
+    td {
+      padding: 15px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+  }
+
+  .banner-gray {
+    background-color: #585858;
+    color: #fff;
+  }
+
+  .sidebar-gray {
+    background-color: #cccccc;
+    color: #333;
+  }
+}
+
+.footer {
+  margin-top: 20px; 
+}
+
+.welcome-text {
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #444;
+  color: #fff;
+}
+
+.nav-bar__left,
+.nav-bar__right {
+  display: flex;
+  align-items: center;
+}
+
+.nav-bar__link {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+.nav-bar__link--active {
+  font-weight: bold;
+}
+
+.campus-dropdown {
+  margin-left: 10px;
+  padding: 5px;
+}
+
+.layout__main {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  height: 100vh;
+  flex: 0 0 250px;
+  background-color: #cccccc;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar__link {
+  color: #fff;
+  text-decoration: none;
+  padding: 15px;
+}
+
+.sidebar__link--active {
+  background-color: #444;
+}
+
+.sidebar__item {
+  padding: 10px;
+}
+
+.clock-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #444;
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.clock {
+  display: flex;
+  align-items: center;
+}
+
+.clock__time {
+  margin-right: 20px;
+}
+
+.clock__status {
+  font-weight: bold;
+}
+
+.stats-container {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 20px;
+  background-color: #e8e8e8;
+  color: #333;
+}
+
+.stats-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stats-item__label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.stats-item__value {
+  font-size: 1.5rem;
 }

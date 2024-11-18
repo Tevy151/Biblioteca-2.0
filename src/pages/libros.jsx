@@ -22,6 +22,7 @@ const Libros = () => {
   return (
     <div className='book-container'>
       <div className='book-list'>
+        <h3>Libros Disponibles</h3>
         {books.map((book) => (
           <div
             key={book.id}
@@ -34,7 +35,7 @@ const Libros = () => {
       </div>
       {selectedBook && (
         <div className='book-details'>
-          <img src={PortadaFke} alt='Portada del libro' className='book-cover' />
+          <img src={`${PortadaFke}?${new Date().getTime()}`} alt='Portada del libro' className='book-cover' />
           <p>{selectedBook.title}</p>
           <p>Autor: {selectedBook.author}</p>
           <p>Editorial: {selectedBook.publisher}</p>

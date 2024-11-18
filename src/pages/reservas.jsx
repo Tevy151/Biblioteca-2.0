@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PortadaFke from '../assets/PortadaFke.png';
-import Captura from '../assets/Captura.png'; // Ensure consistent casing
+import Captura from '../assets/Captura.png'; 
 
 const books = Array.from({ length: 20 }, (_, i) => ({
   id: i + 1,
@@ -144,7 +144,7 @@ const Reservas = ({ addReservation }) => {
     </div>
   </div>
   <div className="imagensala">
-    <img src={Captura} alt="Mapa de la sala" className="salas-image-small" />
+    <img src={`${Captura}?${new Date().getTime()}`} alt="Mapa de la sala" className="salas-image-small" />
   </div>
 </div>
 
