@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Profile = ({ reservations }) => {
+const Profile = ({ reservations, setReservations }) => {
 
   return (
     <div>
@@ -8,7 +8,18 @@ const Profile = ({ reservations }) => {
       <h3>Mis Reservas</h3>
       <ul>
         {reservations.map((reservation, index) => (
-          <li key={index}>{reservation}</li>
+          <li key={index}>{reservation}
+            <button onClick={() => {
+              alert(`Haz eliminado la reserva ${reservation}`);
+              setReservations(
+                reservations.filter(a =>
+                  a !== reservation
+                )
+              );
+            }}>
+              Eliminar
+            </button>
+          </li>
         ))}
       </ul>
     </div>
