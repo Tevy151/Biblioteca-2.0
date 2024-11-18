@@ -25,7 +25,7 @@ const Layout = () => {
         <div className='layout__container'>
           <Routes>
             <Route path='/' element={<HomePage />} />
-            <Route path='/profile' element={<Profile reservations={reservations} />} />
+            <Route path='/profile' element={<Profile reservations={reservations} setReservations={setReservations} />} />
             <Route path='/reservas' element={<Reservas addReservation={addReservation} />} />
             <Route path='/libros' element={<Libros />} />
             <Route path='/salas' element={<div><p>Mapa de la biblioteca</p><img src={Captura} alt="Imagen de Sala" className="salas-image" /></div>} />
